@@ -83,6 +83,21 @@
   .contact a{color:#d7e2ee; text-decoration:none;}
   .contact a:hover{text-decoration:underline; color:#fff;}
 
+  /* ---------- Perfil (always visible, with header) ---------- */
+  .profile-block{
+    padding:24px 40px;
+    border-bottom:1px solid var(--border);
+  }
+  .profile-block h2{
+    font-family:Cambria,Georgia,"Times New Roman",serif;
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:.3px;
+    text-transform:uppercase;
+    color:var(--navy);
+    margin:0 0 10px;
+  }
+
   /* ---------- Nav (menu / dropdown) ---------- */
   nav.tabs{
     display:flex;
@@ -149,7 +164,7 @@
 
   .perfil{text-align:justify; color:var(--ink); margin:0;}
 
-  /* ---------- Accordion entries (experience / courses) ---------- */
+  /* ---------- Entries (experience / courses) — always expanded ---------- */
   .entry{
     border:1px solid var(--border);
     border-radius:8px;
@@ -157,20 +172,15 @@
     overflow:hidden;
   }
   .entry:last-child{margin-bottom:0;}
-  .entry-btn{
-    width:100%;
+  .entry-head{
     display:flex;
     justify-content:space-between;
     align-items:center;
     gap:12px;
     background:var(--accent-soft);
-    border:none;
-    text-align:left;
     padding:16px 18px;
-    cursor:pointer;
-    font:inherit;
+    flex-wrap:wrap;
   }
-  .entry-btn:hover{background:#e2eaf3;}
   .entry-heading{display:flex; flex-direction:column; gap:2px;}
   .entry-title{font-weight:700; color:var(--navy); font-size:15px;}
   .entry-role{font-style:italic; color:var(--gray); font-weight:400; font-size:13px;}
@@ -184,24 +194,7 @@
     white-space:nowrap;
     flex:none;
   }
-  .chevron{
-    flex:none;
-    width:10px; height:10px;
-    border-right:2px solid var(--navy);
-    border-bottom:2px solid var(--navy);
-    transform:rotate(45deg);
-    transition:transform .2s ease;
-    margin-left:6px;
-  }
-  .entry.open .chevron{transform:rotate(-135deg);}
-  .entry-body{
-    max-height:0;
-    overflow:hidden;
-    transition:max-height .28s ease;
-    background:#fff;
-  }
-  .entry.open .entry-body{max-height:1400px;}
-  .entry-body-inner{padding:16px 20px 18px;}
+  .entry-body-inner{padding:16px 20px 18px; background:#fff;}
   ul.bullets{margin:0; padding-left:20px;}
   ul.bullets li{color:var(--ink); font-size:13.5px; margin-bottom:8px;}
   ul.bullets li:last-child{margin-bottom:0;}
@@ -262,8 +255,6 @@
     header{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
     nav.tabs, select.tabs-select{display:none !important;}
     .panel{display:block !important; page-break-inside:avoid;}
-    .entry-body{max-height:none !important;}
-    .chevron{display:none;}
   }
 </style>
 </head>
@@ -284,15 +275,24 @@
       </div>
     </header>
 
+    <div class="profile-block">
+      <h2>Perfil profesional</h2>
+      <p class="perfil">
+        Como profesional busco aportar mis conocimientos en tecnologías de la información para ofrecer
+        el mejor servicio en la instalación, mantenimiento, gestión y actualización de software e
+        instalación de hardware. Busco, además, un entorno dinámico donde seguir aprendiendo y creciendo
+        profesionalmente, ofreciendo soluciones efectivas y eficientes. Aspiro a ser un elemento confiable
+        y efectivo que contribuya al crecimiento y éxito de la empresa.
+      </p>
+    </div>
+
     <nav class="tabs" id="tabs">
-      <button class="active" data-target="perfil">Perfil</button>
-      <button data-target="experiencia">Experiencia</button>
+      <button class="active" data-target="experiencia">Experiencia</button>
       <button data-target="cursos">Cursos y Certificaciones</button>
       <button data-target="educacion">Educación</button>
       <button data-target="competencias">Competencias</button>
     </nav>
     <select class="tabs-select" id="tabsSelect" aria-label="Navegar secciones del CV">
-      <option value="perfil">Perfil</option>
       <option value="experiencia">Experiencia</option>
       <option value="cursos">Cursos y Certificaciones</option>
       <option value="educacion">Educación</option>
@@ -301,35 +301,19 @@
 
     <div class="panels">
 
-      <!-- PERFIL -->
-      <section class="panel active" id="perfil">
-        <h2 class="panel-title">Perfil profesional</h2>
-        <p class="perfil">
-          Como profesional busco aportar mis conocimientos en tecnologías de la información para ofrecer
-          el mejor servicio en la instalación, mantenimiento, gestión y actualización de software e
-          instalación de hardware. Busco, además, un entorno dinámico donde seguir aprendiendo y creciendo
-          profesionalmente, ofreciendo soluciones efectivas y eficientes. Aspiro a ser un elemento confiable
-          y efectivo que contribuya al crecimiento y éxito de la empresa.
-        </p>
-      </section>
-
       <!-- EXPERIENCIA -->
-      <section class="panel" id="experiencia">
+      <section class="panel active" id="experiencia">
         <h2 class="panel-title">Experiencia profesional</h2>
 
-        <div class="entry open">
-          <button class="entry-btn" type="button">
+        <div class="entry">
+          <div class="entry-head">
             <span class="entry-heading">
               <span class="entry-title">Grupo Médico Delihealths</span>
               <span class="entry-role">Soporte Técnico</span>
             </span>
-            <span style="display:flex; align-items:center; gap:10px;">
-              <span class="entry-date">Jun 2025 – Ago 2026</span>
-              <span class="chevron"></span>
-            </span>
-          </button>
-          <div class="entry-body">
-            <div class="entry-body-inner">
+            <span class="entry-date">Jun 2025 – Ago 2026</span>
+          </div>
+          <div class="entry-body-inner">
               <ul class="bullets">
                 <li>Soporte técnico y gestión de incidencias: atención, diagnóstico, seguimiento y resolución de incidencias de hardware, software, Microsoft 365, conectividad, periféricos y plataformas corporativas para usuarios y sedes remotas.</li>
                 <li>Administración de equipos e inventario tecnológico: gestión del ciclo de vida de equipos de cómputo y dispositivos móviles, incluyendo asignaciones, altas, bajas, resguardos, inventarios, validación física y funcional, movimientos entre sedes y recuperación de activos.</li>
@@ -342,23 +326,18 @@
                 <li>Análisis, seguimiento y mejora de procesos: creación y mantenimiento de formularios, tableros, controles y reportes para seguimiento de incidencias, equipos, accesos y operación; identificación de discrepancias y riesgos relacionados con inventarios y cumplimiento de procesos.</li>
                 <li>Coordinación interdepartamental: comunicación y seguimiento con Recursos Humanos, Operaciones, Contabilidad, Legal, Supply y usuarios finales para resolución de requerimientos tecnológicos y ejecución de procesos internos.</li>
               </ul>
-            </div>
           </div>
         </div>
 
         <div class="entry">
-          <button class="entry-btn" type="button">
+          <div class="entry-head">
             <span class="entry-heading">
               <span class="entry-title">Casa Financiera</span>
               <span class="entry-role">Analista de Datos</span>
             </span>
-            <span style="display:flex; align-items:center; gap:10px;">
-              <span class="entry-date">Jul 2024 – Jun 2025</span>
-              <span class="chevron"></span>
-            </span>
-          </button>
-          <div class="entry-body">
-            <div class="entry-body-inner">
+            <span class="entry-date">Jul 2024 – Jun 2025</span>
+          </div>
+          <div class="entry-body-inner">
               <ul class="bullets">
                 <li>Gestión y análisis de solicitudes de crédito hipotecario, validando información personal, financiera y documental para procesos de precalificación y aprobación.</li>
                 <li>Análisis de expedientes conforme a políticas bancarias y gestión de casos en plataformas de Scotiabank, Banamex, HSBC, Banorte y Santander.</li>
@@ -366,7 +345,6 @@
                 <li>Gestión directa con instituciones bancarias para aclaraciones y reconsideración de casos, sustentando solicitudes mediante análisis de expedientes.</li>
                 <li>Creación y administración de una base de seguimiento de más de 2,000 registros, controlando folios, banco, estatus, documentación y resultados; comunicación continua con brokers hipotecarios.</li>
               </ul>
-            </div>
           </div>
         </div>
       </section>
@@ -376,34 +354,29 @@
         <h2 class="panel-title">Cursos y certificaciones</h2>
 
         <div class="entry">
-          <button class="entry-btn" type="button">
+          <div class="entry-head">
             <span class="entry-heading">
               <span class="entry-title">Cisco Network Academy</span>
             </span>
-            <span class="chevron"></span>
-          </button>
-          <div class="entry-body">
-            <div class="entry-body-inner">
+          </div>
+          <div class="entry-body-inner">
               <ul class="bullets">
                 <li>Introducción a IoT (Febrero, 2023)</li>
                 <li>Introducción a Packet Tracer (Febrero, 2023)</li>
                 <li>Introducción a la Ciberseguridad (Marzo, 2024)</li>
                 <li>Curso CCNA V.7 (Marzo, 2024)</li>
               </ul>
-            </div>
           </div>
         </div>
 
         <div class="entry">
-          <button class="entry-btn" type="button">
+          <div class="entry-head">
             <span class="entry-heading">
               <span class="entry-title">International Youth Fundation, CECATI 162</span>
               <span class="entry-role">Soporte TI</span>
             </span>
-            <span class="chevron"></span>
-          </button>
-          <div class="entry-body">
-            <div class="entry-body-inner">
+          </div>
+          <div class="entry-body-inner">
               <ul class="bullets">
                 <li>Aspectos básicos de la asistencia técnica (Abril, 2021)</li>
                 <li>Los bites y bytes de las redes informáticas (Abril, 2021)</li>
@@ -411,7 +384,6 @@
                 <li>Administración de sistemas y servicios de infraestructura de TI (Mayo, 2021)</li>
                 <li>Seguridad Informática: defensa contra las artes oscuras digitales (Junio, 2021)</li>
               </ul>
-            </div>
           </div>
         </div>
       </section>
@@ -511,13 +483,6 @@
     btn.addEventListener('click', function(){ activateTab(btn.dataset.target); });
   });
   select.addEventListener('change', function(){ activateTab(select.value); });
-
-  // Accordion entries (experience / courses)
-  document.querySelectorAll('.entry-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      btn.parentElement.classList.toggle('open');
-    });
-  });
 </script>
 </body>
 </html>
