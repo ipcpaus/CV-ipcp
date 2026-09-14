@@ -240,26 +240,33 @@
   .entry.accordion.open .entry-collapse{max-height:2000px;}
 
   ul.bullets.cert-list li{
+    list-style:none;
+    margin-left:-20px;
+  }
+  ul.bullets.cert-list li.cert-item{
+    cursor:pointer;
+    padding:4px 6px;
+    margin-bottom:4px;
+    border-radius:6px;
+    transition:background .15s ease;
+  }
+  ul.bullets.cert-list li.cert-item:last-child{margin-bottom:0;}
+  ul.bullets.cert-list li.cert-item:hover{background:var(--accent-soft);}
+  ul.bullets.cert-list li.cert-item:hover .cert-row > span:first-child{text-decoration:underline; color:var(--navy);}
+  .cert-row{
     display:flex;
     justify-content:space-between;
     align-items:baseline;
     gap:10px 16px;
     flex-wrap:wrap;
   }
-  ul.bullets.cert-list li.cert-item{
-    cursor:pointer;
-    padding:4px 6px;
-    margin:-4px -6px 4px -6px;
-    border-radius:6px;
-    transition:background .15s ease;
-  }
-  ul.bullets.cert-list li.cert-item:last-child{margin-bottom:-4px;}
-  ul.bullets.cert-list li.cert-item:hover{background:var(--accent-soft);}
-  ul.bullets.cert-list li.cert-item:hover > span:first-child{text-decoration:underline; color:var(--navy);}
   .cert-link{
     appearance:none;
     font:inherit;
     flex:none;
+    display:flex;
+    align-items:center;
+    gap:6px;
     color:var(--navy);
     background:#fff;
     font-weight:600;
@@ -272,7 +279,30 @@
     cursor:pointer;
     transition:background .15s ease, border-color .15s ease;
   }
-  .cert-link:hover{background:var(--accent-soft); border-color:var(--navy);}
+  .cert-link:hover{background:#fff; border-color:var(--navy);}
+  .cert-link .chevron{
+    width:7px; height:7px;
+    border-right:2px solid var(--navy);
+    border-bottom:2px solid var(--navy);
+    transform:rotate(45deg);
+    transition:transform .2s ease;
+    margin-left:0;
+  }
+  .cert-item.open .cert-link .chevron{transform:rotate(-135deg);}
+  .cert-preview{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+  }
+  .cert-item.open .cert-preview{max-height:640px;}
+  .cert-preview-inner{padding-top:10px;}
+  .cert-preview iframe{
+    width:100%;
+    height:600px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:#f4f6f8;
+  }
   .verify-note{
     color:var(--gray);
     font-size:12.5px;
@@ -320,64 +350,6 @@
   }
 
   footer.print-note{display:none;}
-
-  /* ---------- PDF viewer modal ---------- */
-  .pdf-modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(4,16,31,0.72);
-    z-index:1000;
-    padding:24px;
-    align-items:center;
-    justify-content:center;
-  }
-  .pdf-modal.open{display:flex;}
-  .pdf-modal-inner{
-    background:#fff;
-    width:100%;
-    max-width:900px;
-    height:100%;
-    max-height:880px;
-    border-radius:10px;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-    box-shadow:0 20px 60px rgba(0,0,0,0.4);
-  }
-  .pdf-modal-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-    padding:14px 18px;
-    background:var(--navy);
-    color:#fff;
-    flex:none;
-  }
-  .pdf-modal-title{font-weight:700; font-size:14px;}
-  .pdf-modal-actions{display:flex; align-items:center; gap:14px; flex:none;}
-  .pdf-modal-download{color:#d7e2ee; font-size:13px; text-decoration:none; font-weight:600;}
-  .pdf-modal-download:hover{color:#fff; text-decoration:underline;}
-  .pdf-modal-close{
-    appearance:none;
-    border:none;
-    background:rgba(255,255,255,0.12);
-    color:#fff;
-    width:28px;
-    height:28px;
-    border-radius:50%;
-    font-size:15px;
-    line-height:1;
-    cursor:pointer;
-  }
-  .pdf-modal-close:hover{background:rgba(255,255,255,0.24);}
-  .pdf-modal-inner iframe{flex:1; width:100%; border:none;}
-
-  @media (max-width:680px){
-    .pdf-modal{padding:0;}
-    .pdf-modal-inner{max-height:none; border-radius:0;}
-  }
 
   @media (max-width:680px){
     .shell{padding:0;}
@@ -516,9 +488,18 @@
           </div>
           <div class="entry-body-inner">
               <ul class="bullets cert-list">
-                <li class="cert-item" data-pdf="assets/certificados/cisco-introduccion-a-iot.pdf" data-title="Introducción a IoT — Cisco Networking Academy"><span>Introducción a IoT (Febrero, 2023)</span><button class="cert-link" type="button">Ver certificado</button></li>
-                <li class="cert-item" data-pdf="assets/certificados/cisco-introduccion-a-packet-tracer.pdf" data-title="Introducción a Packet Tracer — Cisco Networking Academy"><span>Introducción a Packet Tracer (Febrero, 2023)</span><button class="cert-link" type="button">Ver certificado</button></li>
-                <li class="cert-item" data-pdf="assets/certificados/cisco-introduccion-a-la-ciberseguridad.pdf" data-title="Introducción a la Ciberseguridad — Cisco Networking Academy"><span>Introducción a la Ciberseguridad (Marzo, 2024)</span><button class="cert-link" type="button">Ver certificado</button></li>
+                <li class="cert-item" data-pdf="assets/certificados/cisco-introduccion-a-iot.pdf">
+                  <div class="cert-row"><span>Introducción a IoT (Febrero, 2023)</span><button class="cert-link" type="button">Ver certificado <span class="chevron"></span></button></div>
+                  <div class="cert-preview"><div class="cert-preview-inner"><iframe loading="lazy" title="Introducción a IoT — Cisco Networking Academy"></iframe></div></div>
+                </li>
+                <li class="cert-item" data-pdf="assets/certificados/cisco-introduccion-a-packet-tracer.pdf">
+                  <div class="cert-row"><span>Introducción a Packet Tracer (Febrero, 2023)</span><button class="cert-link" type="button">Ver certificado <span class="chevron"></span></button></div>
+                  <div class="cert-preview"><div class="cert-preview-inner"><iframe loading="lazy" title="Introducción a Packet Tracer — Cisco Networking Academy"></iframe></div></div>
+                </li>
+                <li class="cert-item" data-pdf="assets/certificados/cisco-introduccion-a-la-ciberseguridad.pdf">
+                  <div class="cert-row"><span>Introducción a la Ciberseguridad (Marzo, 2024)</span><button class="cert-link" type="button">Ver certificado <span class="chevron"></span></button></div>
+                  <div class="cert-preview"><div class="cert-preview-inner"><iframe loading="lazy" title="Introducción a la Ciberseguridad — Cisco Networking Academy"></iframe></div></div>
+                </li>
                 <li>Curso CCNA V.7 (Marzo, 2024)</li>
               </ul>
           </div>
@@ -551,9 +532,18 @@
           </div>
           <div class="entry-body-inner">
               <ul class="bullets cert-list">
-                <li class="cert-item" data-pdf="assets/certificados/dgcft-elaboracion-de-textos.pdf" data-title="Manejo del procesador de textos Word — DGCFT"><span>Manejo del procesador de textos Word (Junio, 2021)</span><button class="cert-link" type="button">Ver certificado</button></li>
-                <li class="cert-item" data-pdf="assets/certificados/dgcft-hojas-de-calculo.pdf" data-title="Manejo del procesador de hojas de cálculo — DGCFT"><span>Manejo del procesador de hojas de cálculo (Junio, 2021)</span><button class="cert-link" type="button">Ver certificado</button></li>
-                <li class="cert-item" data-pdf="assets/certificados/dgcft-windows-e-internet.pdf" data-title="Windows e Internet — DGCFT"><span>Windows e Internet (Junio, 2021)</span><button class="cert-link" type="button">Ver certificado</button></li>
+                <li class="cert-item" data-pdf="assets/certificados/dgcft-elaboracion-de-textos.pdf">
+                  <div class="cert-row"><span>Manejo del procesador de textos Word (Junio, 2021)</span><button class="cert-link" type="button">Ver certificado <span class="chevron"></span></button></div>
+                  <div class="cert-preview"><div class="cert-preview-inner"><iframe loading="lazy" title="Manejo del procesador de textos Word — DGCFT"></iframe></div></div>
+                </li>
+                <li class="cert-item" data-pdf="assets/certificados/dgcft-hojas-de-calculo.pdf">
+                  <div class="cert-row"><span>Manejo del procesador de hojas de cálculo (Junio, 2021)</span><button class="cert-link" type="button">Ver certificado <span class="chevron"></span></button></div>
+                  <div class="cert-preview"><div class="cert-preview-inner"><iframe loading="lazy" title="Manejo del procesador de hojas de cálculo — DGCFT"></iframe></div></div>
+                </li>
+                <li class="cert-item" data-pdf="assets/certificados/dgcft-windows-e-internet.pdf">
+                  <div class="cert-row"><span>Windows e Internet (Junio, 2021)</span><button class="cert-link" type="button">Ver certificado <span class="chevron"></span></button></div>
+                  <div class="cert-preview"><div class="cert-preview-inner"><iframe loading="lazy" title="Windows e Internet — DGCFT"></iframe></div></div>
+                </li>
               </ul>
           </div>
         </div>
@@ -638,19 +628,6 @@
   </div>
 </div>
 
-<div class="pdf-modal" id="pdfModal">
-  <div class="pdf-modal-inner">
-    <div class="pdf-modal-header">
-      <span class="pdf-modal-title" id="pdfModalTitle"></span>
-      <div class="pdf-modal-actions">
-        <a class="pdf-modal-download" id="pdfModalDownload" href="#" download>Descargar</a>
-        <button class="pdf-modal-close" id="pdfModalClose" type="button" aria-label="Cerrar">✕</button>
-      </div>
-    </div>
-    <iframe id="pdfModalFrame" src="" title="Certificado"></iframe>
-  </div>
-</div>
-
 <script>
   // Tab navigation (desktop bar + mobile select stay in sync)
   var tabButtons = document.querySelectorAll('#tabs button');
@@ -668,37 +645,15 @@
   });
   select.addEventListener('change', function(){ activateTab(select.value); });
 
-  // PDF certificate viewer modal
-  var pdfModal = document.getElementById('pdfModal');
-  var pdfFrame = document.getElementById('pdfModalFrame');
-  var pdfTitle = document.getElementById('pdfModalTitle');
-  var pdfDownload = document.getElementById('pdfModalDownload');
-
-  function openPdfModal(url, title){
-    pdfFrame.src = url;
-    pdfDownload.href = url;
-    pdfDownload.setAttribute('download', url.split('/').pop());
-    pdfTitle.textContent = title || 'Certificado';
-    pdfModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closePdfModal(){
-    pdfModal.classList.remove('open');
-    pdfFrame.src = '';
-    document.body.style.overflow = '';
-  }
-
+  // Certificate preview: expands inline below the row, loads the PDF lazily
   document.querySelectorAll('.cert-item').forEach(function(li){
     li.addEventListener('click', function(){
-      openPdfModal(li.dataset.pdf, li.dataset.title);
+      var isOpen = li.classList.toggle('open');
+      var iframe = li.querySelector('.cert-preview iframe');
+      if (isOpen && !iframe.src) {
+        iframe.src = li.dataset.pdf;
+      }
     });
-  });
-  document.getElementById('pdfModalClose').addEventListener('click', closePdfModal);
-  pdfModal.addEventListener('click', function(e){
-    if (e.target === pdfModal) closePdfModal();
-  });
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape' && pdfModal.classList.contains('open')) closePdfModal();
   });
 
   // Experience accordion
