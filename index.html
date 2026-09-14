@@ -46,8 +46,16 @@
     padding:36px 40px 30px;
     display:flex;
     align-items:center;
+    justify-content:space-between;
     gap:24px;
     flex-wrap:wrap;
+  }
+  .head-left{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    flex:1;
+    min-width:220px;
   }
   .avatar{
     width:110px;
@@ -58,7 +66,7 @@
     box-shadow:0 4px 14px rgba(0,0,0,0.35);
     flex:none;
   }
-  .head-text{flex:1; min-width:220px;}
+  .head-text{flex:1; min-width:180px;}
   h1{
     font-family:Cambria,Georgia,"Times New Roman",serif;
     font-weight:700;
@@ -68,20 +76,23 @@
   }
   .role{
     color:#bcd0e6;
-    letter-spacing:1.5px;
+    letter-spacing:1px;
     font-size:13px;
     text-transform:uppercase;
-    margin:0 0 12px;
+    margin:0;
   }
-  .contact{
+  .head-contact{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:6px;
     color:#d7e2ee;
     font-size:13px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px 16px;
+    text-align:right;
+    flex:none;
   }
-  .contact a{color:#d7e2ee; text-decoration:none;}
-  .contact a:hover{text-decoration:underline; color:#fff;}
+  .head-contact a{color:#d7e2ee; text-decoration:none;}
+  .head-contact a:hover{text-decoration:underline; color:#fff;}
 
   /* ---------- Perfil (always visible, with header) ---------- */
   .profile-block{
@@ -375,6 +386,7 @@
     .panels{padding:26px 22px 36px;}
     nav.tabs{display:none;}
     select.tabs-select{display:block;}
+    .head-contact{align-items:flex-start; text-align:left; width:100%;}
   }
 
   @media print{
@@ -392,15 +404,18 @@
   <div class="card">
 
     <header>
-      <img class="avatar" src="assets/ingrid-castillo.jpg" alt="Foto de Ingrid Paulina Castillo Pérez">
-      <div class="head-text">
-        <h1>INGRID PAULINA CASTILLO PÉREZ</h1>
-        <p class="role">Ing. Comunicaciones y Electrónica</p>
-        <p class="contact">
-          <span>Guerrero, Cuauhtémoc, 06300, CDMX</span>
-          <span>5591920047</span>
-          <a href="mailto:ipcp1101@outlook.com">ipcp1101@outlook.com</a>
-        </p>
+      <div class="head-left">
+        <img class="avatar" src="assets/ingrid-castillo.jpg" alt="Foto de Ingrid Paulina Castillo Pérez">
+        <div class="head-text">
+          <h1>INGRID PAULINA CASTILLO PÉREZ</h1>
+          <p class="role">IT Support Specialist | Operación de TI | Gestión de Activos y Accesos</p>
+        </div>
+      </div>
+      <div class="head-contact">
+        <span>CDMX</span>
+        <span>5591920047</span>
+        <a href="mailto:ipcp1101@outlook.com">ipcp1101@outlook.com</a>
+        <a href="https://www.linkedin.com/in/ingrid-paulina-castillo-p%C3%A9rez-588a41213" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </header>
 
