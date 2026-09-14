@@ -199,6 +199,34 @@
   ul.bullets li{color:var(--ink); font-size:13.5px; margin-bottom:8px;}
   ul.bullets li:last-child{margin-bottom:0;}
   ul.bullets li::marker{color:var(--navy);}
+  ul.bullets li strong{color:var(--navy); font-weight:700;}
+
+  /* Experience entries: collapsible accordion */
+  button.entry-head{
+    appearance:none;
+    border:none;
+    cursor:pointer;
+    width:100%;
+    font:inherit;
+    text-align:left;
+  }
+  .entry.accordion .chevron{
+    flex:none;
+    width:9px;
+    height:9px;
+    border-right:2px solid var(--navy);
+    border-bottom:2px solid var(--navy);
+    transform:rotate(45deg);
+    transition:transform .2s ease;
+    margin-left:8px;
+  }
+  .entry.accordion.open .chevron{transform:rotate(-135deg);}
+  .entry-collapse{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+  }
+  .entry.accordion.open .entry-collapse{max-height:2000px;}
 
   ul.bullets.cert-list li{
     display:flex;
@@ -334,38 +362,47 @@
       <section class="panel active" id="experiencia">
         <h2 class="panel-title">Experiencia profesional</h2>
 
-        <div class="entry">
-          <div class="entry-head">
+        <div class="entry accordion open">
+          <button class="entry-head" type="button">
             <span class="entry-heading">
               <span class="entry-title">Grupo Médico Delihealths</span>
               <span class="entry-role">Soporte Técnico</span>
             </span>
-            <span class="entry-date">Jun 2025 – Ago 2026</span>
-          </div>
-          <div class="entry-body-inner">
+            <span style="display:flex; align-items:center;">
+              <span class="entry-date">Jun 2025 – Ago 2026</span>
+              <span class="chevron"></span>
+            </span>
+          </button>
+          <div class="entry-collapse">
+            <div class="entry-body-inner">
               <ul class="bullets">
-                <li>Soporte técnico y gestión de incidencias: atención, diagnóstico, seguimiento y resolución de incidencias de hardware, software, Microsoft 365, conectividad, periféricos y plataformas corporativas para usuarios y sedes remotas.</li>
-                <li>Administración de equipos e inventario tecnológico: gestión del ciclo de vida de equipos de cómputo y dispositivos móviles, incluyendo asignaciones, altas, bajas, resguardos, inventarios, validación física y funcional, movimientos entre sedes y recuperación de activos.</li>
-                <li>Administración de usuarios, accesos y permisos: creación, modificación y baja de cuentas; administración de permisos, credenciales, accesos a plataformas internas y soporte a procesos de autenticación y recuperación de cuentas.</li>
-                <li>Onboarding y offboarding tecnológico: preparación y entrega de equipos, configuración de accesos y herramientas para nuevos ingresos, así como revocación de accesos, recuperación de activos y cierre tecnológico en procesos de baja.</li>
-                <li>Administración y soporte de plataformas corporativas: soporte operativo a Microsoft 365, Teams, Outlook, OneDrive, Nimbo, Monday.com, Metabase/Estela, Odoo, sistemas administrativos Aspel y otras herramientas internas.</li>
-                <li>Diagnóstico y mantenimiento de equipos: evaluación de fallas de hardware y software, reinstalación y recuperación de sistemas, gestión de controladores, respaldos, clonación de discos, configuración de periféricos y validaciones posteriores a mantenimiento.</li>
-                <li>Gestión documental y control de activos: elaboración y seguimiento de responsivas, registros de asignación, evidencias fotográficas, reportes técnicos, documentación de incidencias y actualización de bases de datos de inventario y credenciales.</li>
-                <li>Seguimiento a proveedores y servicios tecnológicos: coordinación de soporte con proveedores externos, seguimiento de garantías, adquisición o sustitución de componentes, líneas y dispositivos de telecomunicaciones y escalamiento de incidencias.</li>
-                <li>Análisis, seguimiento y mejora de procesos: creación y mantenimiento de formularios, tableros, controles y reportes para seguimiento de incidencias, equipos, accesos y operación; identificación de discrepancias y riesgos relacionados con inventarios y cumplimiento de procesos.</li>
+                <li><strong>Soporte técnico y gestión de incidencias:</strong> atención, diagnóstico, seguimiento y resolución de incidencias de hardware, software, Microsoft 365, conectividad, periféricos y plataformas corporativas para usuarios y sedes remotas.</li>
+                <li><strong>Administración de equipos e inventario tecnológico:</strong> gestión del ciclo de vida de equipos de cómputo y dispositivos móviles, incluyendo asignaciones, altas, bajas, resguardos, inventarios, validación física y funcional, movimientos entre sedes y recuperación de activos.</li>
+                <li><strong>Administración de usuarios, accesos y permisos:</strong> creación, modificación y baja de cuentas; administración de permisos, credenciales, accesos a plataformas internas y soporte a procesos de autenticación y recuperación de cuentas.</li>
+                <li><strong>Onboarding y offboarding tecnológico:</strong> preparación y entrega de equipos, configuración de accesos y herramientas para nuevos ingresos, así como revocación de accesos, recuperación de activos y cierre tecnológico en procesos de baja.</li>
+                <li><strong>Administración y soporte de plataformas corporativas:</strong> soporte operativo a Microsoft 365, Teams, Outlook, OneDrive, Nimbo, Monday.com, Metabase/Estela, Odoo, sistemas administrativos Aspel y otras herramientas internas.</li>
+                <li><strong>Diagnóstico y mantenimiento de equipos:</strong> evaluación de fallas de hardware y software, reinstalación y recuperación de sistemas, gestión de controladores, respaldos, clonación de discos, configuración de periféricos y validaciones posteriores a mantenimiento.</li>
+                <li><strong>Gestión documental y control de activos:</strong> elaboración y seguimiento de responsivas, registros de asignación, evidencias fotográficas, reportes técnicos, documentación de incidencias y actualización de bases de datos de inventario y credenciales.</li>
+                <li><strong>Seguimiento a proveedores y servicios tecnológicos:</strong> coordinación de soporte con proveedores externos, seguimiento de garantías, adquisición o sustitución de componentes, líneas y dispositivos de telecomunicaciones y escalamiento de incidencias.</li>
+                <li><strong>Análisis, seguimiento y mejora de procesos:</strong> creación y mantenimiento de formularios, tableros, controles y reportes para seguimiento de incidencias, equipos, accesos y operación; identificación de discrepancias y riesgos relacionados con inventarios y cumplimiento de procesos.</li>
               </ul>
+            </div>
           </div>
         </div>
 
-        <div class="entry">
-          <div class="entry-head">
+        <div class="entry accordion">
+          <button class="entry-head" type="button">
             <span class="entry-heading">
               <span class="entry-title">Casa Financiera</span>
               <span class="entry-role">Analista de Datos</span>
             </span>
-            <span class="entry-date">Jul 2024 – Jun 2025</span>
-          </div>
-          <div class="entry-body-inner">
+            <span style="display:flex; align-items:center;">
+              <span class="entry-date">Jul 2024 – Jun 2025</span>
+              <span class="chevron"></span>
+            </span>
+          </button>
+          <div class="entry-collapse">
+            <div class="entry-body-inner">
               <ul class="bullets">
                 <li>Gestión y análisis de solicitudes de crédito hipotecario, validando información personal, financiera y documental para procesos de precalificación y aprobación.</li>
                 <li>Análisis de expedientes conforme a políticas bancarias y gestión de casos en plataformas de Scotiabank, Banamex, HSBC, Banorte y Santander.</li>
@@ -373,6 +410,7 @@
                 <li>Gestión directa con instituciones bancarias para aclaraciones y reconsideración de casos, sustentando solicitudes mediante análisis de expedientes.</li>
                 <li>Creación y administración de una base de seguimiento de más de 2,000 registros, controlando folios, banco, estatus, documentación y resultados; comunicación continua con brokers hipotecarios.</li>
               </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -527,6 +565,13 @@
     btn.addEventListener('click', function(){ activateTab(btn.dataset.target); });
   });
   select.addEventListener('change', function(){ activateTab(select.value); });
+
+  // Experience accordion
+  document.querySelectorAll('.entry.accordion > .entry-head').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btn.parentElement.classList.toggle('open');
+    });
+  });
 </script>
 </body>
 </html>
