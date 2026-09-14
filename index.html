@@ -112,30 +112,34 @@
   /* ---------- Nav (menu / dropdown) ---------- */
   nav.tabs{
     display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
     background:var(--navy-dark);
+    padding:14px 20px;
     overflow-x:auto;
     scrollbar-width:thin;
   }
   nav.tabs button{
     appearance:none;
     border:none;
-    background:transparent;
+    background:rgba(255,255,255,0.08);
     color:#aebdcf;
     font:inherit;
-    font-size:13.5px;
+    font-size:13px;
     font-weight:600;
     letter-spacing:0.3px;
-    padding:15px 20px;
+    padding:9px 18px;
+    border-radius:20px;
     cursor:pointer;
     white-space:nowrap;
-    border-bottom:3px solid transparent;
-    transition:color .15s ease, background .15s ease, border-color .15s ease;
+    transition:color .15s ease, background .15s ease;
   }
-  nav.tabs button:hover{color:#fff; background:rgba(255,255,255,0.06);}
+  nav.tabs button:hover{color:#fff; background:rgba(255,255,255,0.18);}
   nav.tabs button.active{
     color:#fff;
-    border-bottom-color:#5B8FC7;
-    background:rgba(255,255,255,0.08);
+    background:#5B8FC7;
   }
 
   /* Mobile: dropdown select instead of tab bar */
@@ -380,7 +384,7 @@
         <img class="avatar" src="assets/ingrid-castillo.jpg" alt="Foto de Ingrid Paulina Castillo Pérez">
         <div class="head-text">
           <h1>INGRID PAULINA CASTILLO PÉREZ</h1>
-          <p class="role">IT Support Specialist | Operación de TI | Gestión de Activos y Accesos</p>
+          <p class="role">IT Support Specialist | Operación de TI</p>
         </div>
       </div>
       <div class="head-contact">
