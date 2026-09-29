@@ -182,6 +182,10 @@
   ul.bullets li:last-child{margin-bottom:0;}
   ul.bullets li::marker{color:var(--blue);}
   ul.bullets li strong{color:var(--navy);}
+  mark{
+    color:inherit; background:linear-gradient(transparent 38%, #ffe7a3 38%, #ffe7a3 92%, transparent 92%);
+    padding:0 2px; border-radius:2px; -webkit-box-decoration-break:clone; box-decoration-break:clone;
+  }
   ul.bullets.more{margin-top:8px;}
   .more-toggle{
     appearance:none; background:none; border:none; font:inherit; cursor:pointer;
@@ -293,7 +297,7 @@
   }
   @media print{
     body{background:#fff; font-size:12.5px;}
-    .hero, .cta{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .hero, .cta, mark{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
     .hero{padding:24px 16px 72px;}
     nav.toc, .actions, .hero-contact .btn, .more-toggle, .cert-link, .cert-preview, .cta .actions, .skip{display:none !important;}
     ul.bullets.more[hidden]{display:block !important;}
@@ -362,11 +366,11 @@
     <h2>Perfil profesional</h2>
     <div class="profile-grid">
       <p class="perfil">
-        Cuento con experiencia en soporte y operación de TI, brindando atención a usuarios y soluciones
-        a incidencias de hardware, software y plataformas corporativas. A lo largo de mi experiencia he
-        desarrollado habilidades para administrar equipos, accesos y activos tecnológicos, así como para
-        documentar y dar seguimiento a distintos requerimientos. Me caracterizo por ser organizada,
-        analítica y resolutiva, con facilidad para adaptarme, aprender nuevas herramientas y contribuir
+        Cuento con experiencia en <mark>soporte y operación de TI</mark>, brindando atención a usuarios y soluciones
+        a <mark>incidencias de hardware, software y plataformas corporativas</mark>. A lo largo de mi experiencia he
+        desarrollado habilidades para <mark>administrar equipos, accesos y activos tecnológicos</mark>, así como para
+        documentar y dar seguimiento a distintos requerimientos. Me caracterizo por ser <mark>organizada,
+        analítica y resolutiva</mark>, con facilidad para adaptarme, aprender nuevas herramientas y contribuir
         a la mejora de los procesos tecnológicos.
       </p>
       <div>
@@ -402,17 +406,17 @@
           </div>
         </div>
         <ul class="bullets">
-          <li><strong>Soporte técnico y gestión de incidencias:</strong> atención, diagnóstico, seguimiento y resolución de incidencias de hardware, software, Microsoft 365, conectividad, periféricos y plataformas corporativas para usuarios y sedes remotas.</li>
-          <li><strong>Administración de equipos e inventario tecnológico:</strong> gestión del ciclo de vida de equipos de cómputo y dispositivos móviles, incluyendo asignaciones, altas, bajas, resguardos, inventarios, validación física y funcional, movimientos entre sedes y recuperación de activos.</li>
-          <li><strong>Administración de usuarios, accesos y permisos:</strong> creación, modificación y baja de cuentas; administración de permisos, credenciales, accesos a plataformas internas y soporte a procesos de autenticación y recuperación de cuentas.</li>
-          <li><strong>Onboarding y offboarding tecnológico:</strong> preparación y entrega de equipos, configuración de accesos y herramientas para nuevos ingresos, así como revocación de accesos, recuperación de activos y cierre tecnológico en procesos de baja.</li>
+          <li><strong>Soporte técnico y gestión de incidencias:</strong> atención, diagnóstico, seguimiento y resolución de incidencias de hardware, software, <mark>Microsoft 365, conectividad</mark>, periféricos y plataformas corporativas para <mark>usuarios y sedes remotas</mark>.</li>
+          <li><strong>Administración de equipos e inventario tecnológico:</strong> gestión del <mark>ciclo de vida de equipos de cómputo y dispositivos móviles</mark>, incluyendo asignaciones, altas, bajas, resguardos, inventarios, validación física y funcional, movimientos entre sedes y recuperación de activos.</li>
+          <li><strong>Administración de usuarios, accesos y permisos:</strong> <mark>creación, modificación y baja de cuentas</mark>; administración de permisos, credenciales, accesos a plataformas internas y soporte a procesos de <mark>autenticación y recuperación de cuentas</mark>.</li>
+          <li><strong>Onboarding y offboarding tecnológico:</strong> preparación y entrega de equipos, configuración de accesos y herramientas para <mark>nuevos ingresos</mark>, así como <mark>revocación de accesos</mark>, recuperación de activos y cierre tecnológico en procesos de baja.</li>
         </ul>
         <ul class="bullets more" id="more-deli" hidden>
-          <li><strong>Administración y soporte de plataformas corporativas:</strong> soporte operativo a Microsoft 365, Teams, Outlook, OneDrive, Nimbo, Monday.com, Metabase/Estela, Odoo, sistemas administrativos Aspel y otras herramientas internas.</li>
-          <li><strong>Diagnóstico y mantenimiento de equipos:</strong> evaluación de fallas de hardware y software, reinstalación y recuperación de sistemas, gestión de controladores, respaldos, clonación de discos, configuración de periféricos y validaciones posteriores a mantenimiento.</li>
-          <li><strong>Gestión documental y control de activos:</strong> elaboración y seguimiento de responsivas, registros de asignación, evidencias fotográficas, reportes técnicos, documentación de incidencias y actualización de bases de datos de inventario y credenciales.</li>
-          <li><strong>Seguimiento a proveedores y servicios tecnológicos:</strong> coordinación de soporte con proveedores externos, seguimiento de garantías, adquisición o sustitución de componentes, líneas y dispositivos de telecomunicaciones y escalamiento de incidencias.</li>
-          <li><strong>Análisis, seguimiento y mejora de procesos:</strong> creación y mantenimiento de formularios, tableros, controles y reportes para seguimiento de incidencias, equipos, accesos y operación; identificación de discrepancias y riesgos relacionados con inventarios y cumplimiento de procesos.</li>
+          <li><strong>Administración y soporte de plataformas corporativas:</strong> soporte operativo a <mark>Microsoft 365, Teams, Outlook, OneDrive</mark>, Nimbo, Monday.com, Metabase/Estela, Odoo, sistemas administrativos Aspel y otras herramientas internas.</li>
+          <li><strong>Diagnóstico y mantenimiento de equipos:</strong> evaluación de fallas de hardware y software, <mark>reinstalación y recuperación de sistemas</mark>, gestión de controladores, <mark>respaldos, clonación de discos</mark>, configuración de periféricos y validaciones posteriores a mantenimiento.</li>
+          <li><strong>Gestión documental y control de activos:</strong> elaboración y seguimiento de responsivas, registros de asignación, evidencias fotográficas, <mark>reportes técnicos, documentación de incidencias</mark> y actualización de bases de datos de inventario y credenciales.</li>
+          <li><strong>Seguimiento a proveedores y servicios tecnológicos:</strong> coordinación de soporte con <mark>proveedores externos</mark>, seguimiento de garantías, adquisición o sustitución de componentes, líneas y dispositivos de telecomunicaciones y <mark>escalamiento de incidencias</mark>.</li>
+          <li><strong>Análisis, seguimiento y mejora de procesos:</strong> creación y mantenimiento de <mark>formularios, tableros, controles y reportes</mark> para seguimiento de incidencias, equipos, accesos y operación; identificación de discrepancias y riesgos relacionados con inventarios y cumplimiento de procesos.</li>
           <li><strong>Coordinación y seguimiento interdepartamental:</strong> comunicación con distintos equipos, responsables y usuarios para atender requerimientos tecnológicos, dar seguimiento a incidencias y asegurar la correcta ejecución de procesos internos.</li>
         </ul>
         <button class="more-toggle" type="button" aria-expanded="false" aria-controls="more-deli" data-label="6 responsabilidades más">Ver 6 responsabilidades más <span class="chev"></span></button>
@@ -442,12 +446,12 @@
           </div>
         </div>
         <ul class="bullets">
-          <li><strong>Base de seguimiento:</strong> creación y administración de una base de más de 2,000 registros, controlando folios, banco, estatus, documentación y resultados; comunicación continua con brokers hipotecarios.</li>
-          <li><strong>Análisis de solicitudes:</strong> gestión y análisis de solicitudes de crédito hipotecario, validando información personal, financiera y documental para procesos de precalificación y aprobación.</li>
-          <li><strong>Gestión multibanco:</strong> análisis de expedientes conforme a políticas bancarias y gestión de casos en plataformas de Scotiabank, Banamex, HSBC, Banorte y Santander.</li>
+          <li><strong>Base de seguimiento:</strong> creación y administración de una base de <mark>más de 2,000 registros</mark>, controlando folios, banco, estatus, documentación y resultados; comunicación continua con brokers hipotecarios.</li>
+          <li><strong>Análisis de solicitudes:</strong> gestión y análisis de solicitudes de crédito hipotecario, validando <mark>información personal, financiera y documental</mark> para procesos de precalificación y aprobación.</li>
+          <li><strong>Gestión multibanco:</strong> análisis de expedientes conforme a políticas bancarias y gestión de casos en plataformas de <mark>Scotiabank, Banamex, HSBC, Banorte y Santander</mark>.</li>
         </ul>
         <ul class="bullets more" id="more-casa" hidden>
-          <li><strong>Seguimiento de procesos:</strong> precalificación, aprobación y avalúo; integración documental, carga de expedientes y atención de observaciones de mesas de control.</li>
+          <li><strong>Seguimiento de procesos:</strong> precalificación, aprobación y avalúo; integración documental, carga de expedientes y atención de observaciones de <mark>mesas de control</mark>.</li>
           <li><strong>Relación con instituciones bancarias:</strong> gestión directa para aclaraciones y reconsideración de casos, sustentando solicitudes mediante análisis de expedientes.</li>
         </ul>
         <button class="more-toggle" type="button" aria-expanded="false" aria-controls="more-casa" data-label="2 responsabilidades más">Ver 2 responsabilidades más <span class="chev"></span></button>
