@@ -50,7 +50,7 @@
   .hero{
     background:linear-gradient(135deg,var(--navy) 0%,var(--navy-darker) 100%);
     color:#fff;
-    padding:48px 16px 96px;
+    padding:48px 16px 36px;
   }
   .wrap{max-width:1040px; margin:0 auto;}
   .hero-grid{display:flex; align-items:center; gap:28px; flex-wrap:wrap;}
@@ -97,24 +97,22 @@
   .btn.primary{background:var(--blue); border-color:var(--blue);}
   .btn.primary:hover{background:#6c9dd2;}
 
-  /* ---------- KPI strip ---------- */
-  .kpis{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
-    margin:-64px auto 0; padding:0 16px; max-width:1072px; position:relative;
+  /* ---------- Stats strip (inside hero) ---------- */
+  .stats{
+    list-style:none; margin-top:32px; padding:22px 0 0;
+    display:grid; grid-template-columns:repeat(3,1fr);
+    border-top:1px solid rgba(255,255,255,.18);
   }
-  .kpi{
-    background:var(--paper); border-radius:var(--radius); padding:18px 18px 16px;
-    box-shadow:0 10px 30px rgba(4,16,31,.12);
-  }
-  .kpi b{display:block; font-family:var(--serif); font-size:28px; line-height:1.1; color:var(--navy);}
-  .kpi span{display:block; color:var(--gray); font-size:13px; margin-top:4px;}
+  .stats li{padding:0 24px; border-left:1px solid rgba(255,255,255,.18);}
+  .stats li:first-child{padding-left:0; border-left:none;}
+  .stats b{display:block; font-family:var(--serif); font-size:26px; line-height:1.1; color:#fff;}
+  .stats span{display:block; color:#bcd0e6; font-size:13px; margin-top:4px;}
 
   /* ---------- Sticky nav ---------- */
   nav.toc{
     position:sticky; top:0; z-index:20;
     background:rgba(238,241,245,.92); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
     border-bottom:1px solid var(--border);
-    margin-top:28px;
   }
   nav.toc ul{
     list-style:none; margin:0 auto; padding:10px 16px; max-width:1072px;
@@ -182,10 +180,7 @@
   ul.bullets li:last-child{margin-bottom:0;}
   ul.bullets li::marker{color:var(--blue);}
   ul.bullets li strong{color:var(--navy);}
-  mark{
-    color:inherit; background:linear-gradient(transparent 38%, #ffe7a3 38%, #ffe7a3 92%, transparent 92%);
-    padding:0 2px; border-radius:2px; -webkit-box-decoration-break:clone; box-decoration-break:clone;
-  }
+  .perfil b, ul.bullets li b{font-weight:700; color:var(--ink);}
   ul.bullets.more{margin-top:8px;}
   .more-toggle{
     appearance:none; background:none; border:none; font:inherit; cursor:pointer;
@@ -273,19 +268,20 @@
 
   @media (max-width:860px){
     .hero-contact{width:100%; padding:18px 0 0; border-left:none; border-top:1px solid rgba(255,255,255,.18);}
-    .kpis{grid-template-columns:repeat(2,1fr);}
     .profile-grid, .skills-grid{grid-template-columns:1fr;}
   }
   @media (max-width:600px){
     body{font-size:14.5px;}
-    .hero{padding:32px 16px 84px;}
+    .hero{padding:32px 16px 28px;}
+    .stats{grid-template-columns:1fr; gap:14px; margin-top:24px;}
+    .stats li, .stats li:first-child{padding:0; border-left:none; display:flex; align-items:baseline; gap:10px;}
+    .stats b{font-size:22px; min-width:92px; white-space:nowrap;}
+    .stats span{margin-top:0;}
     .hero-grid{gap:18px;}
     .avatar{width:96px; height:96px;}
     .btn{padding:9px 14px; font-size:13.5px;}
     section.block{padding:22px 18px;}
     .cta{padding:22px 18px;}
-    .kpi{padding:14px;}
-    .kpi b{font-size:24px;}
     .job-when{text-align:left;}
     .timeline{padding-left:22px;}
     .job::before{left:-22px;}
@@ -297,11 +293,11 @@
   }
   @media print{
     body{background:#fff; font-size:12.5px;}
-    .hero, .cta, mark{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
-    .hero{padding:24px 16px 72px;}
+    .hero, .cta{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .hero{padding:24px 16px;}
     nav.toc, .actions, .hero-contact .btn, .more-toggle, .cert-link, .cert-preview, .cta .actions, .skip{display:none !important;}
     ul.bullets.more[hidden]{display:block !important;}
-    .kpi, section.block{box-shadow:none; border:1px solid var(--border);}
+    section.block{box-shadow:none; border:1px solid var(--border);}
     section.block{break-inside:avoid-page;}
     .job, .cert-group{break-inside:avoid;}
   }
@@ -339,14 +335,12 @@
       <a class="btn primary" href="CV_Ingrid_Castillo_Perez.docx" download><svg class="i"><use href="#i-down"/></svg> Descargar CV</a>
     </address>
   </div>
+  <ul class="wrap stats" aria-label="Resumen en cifras">
+    <li><b>+2 años</b><span>de experiencia en soporte de TI y análisis de datos</span></li>
+    <li><b>12</b><span>cursos y certificaciones (Cisco, Coursera, DGCFT)</span></li>
+    <li><b>+2,000</b><span>registros gestionados en una base de seguimiento</span></li>
+  </ul>
 </header>
-
-<div class="kpis" role="list" aria-label="Resumen en cifras">
-  <div class="kpi" role="listitem"><b>+2 años</b><span>de experiencia en soporte de TI y análisis de datos</span></div>
-  <div class="kpi" role="listitem"><b>12</b><span>cursos y certificaciones (Cisco, Coursera, DGCFT)</span></div>
-  <div class="kpi" role="listitem"><b>+2,000</b><span>registros gestionados en una base de seguimiento</span></div>
-  <div class="kpi" role="listitem"><b>IPN</b><span>Pasante de Ingeniería en Comunicaciones y Electrónica</span></div>
-</div>
 
 <nav class="toc" aria-label="Secciones del CV">
   <ul>
@@ -366,11 +360,11 @@
     <h2>Perfil profesional</h2>
     <div class="profile-grid">
       <p class="perfil">
-        Cuento con experiencia en <mark>soporte y operación de TI</mark>, brindando atención a usuarios y soluciones
-        a <mark>incidencias de hardware, software y plataformas corporativas</mark>. A lo largo de mi experiencia he
-        desarrollado habilidades para <mark>administrar equipos, accesos y activos tecnológicos</mark>, así como para
-        documentar y dar seguimiento a distintos requerimientos. Me caracterizo por ser <mark>organizada,
-        analítica y resolutiva</mark>, con facilidad para adaptarme, aprender nuevas herramientas y contribuir
+        Cuento con experiencia en <b>soporte y operación de TI</b>, brindando atención a usuarios y soluciones
+        a <b>incidencias de hardware, software y plataformas corporativas</b>. A lo largo de mi experiencia he
+        desarrollado habilidades para <b>administrar equipos, accesos y activos tecnológicos</b>, así como para
+        documentar y dar seguimiento a distintos requerimientos. Me caracterizo por ser <b>organizada,
+        analítica y resolutiva</b>, con facilidad para adaptarme, aprender nuevas herramientas y contribuir
         a la mejora de los procesos tecnológicos.
       </p>
       <div>
@@ -406,17 +400,17 @@
           </div>
         </div>
         <ul class="bullets">
-          <li><strong>Soporte técnico y gestión de incidencias:</strong> atención, diagnóstico, seguimiento y resolución de incidencias de hardware, software, <mark>Microsoft 365, conectividad</mark>, periféricos y plataformas corporativas para <mark>usuarios y sedes remotas</mark>.</li>
-          <li><strong>Administración de equipos e inventario tecnológico:</strong> gestión del <mark>ciclo de vida de equipos de cómputo y dispositivos móviles</mark>, incluyendo asignaciones, altas, bajas, resguardos, inventarios, validación física y funcional, movimientos entre sedes y recuperación de activos.</li>
-          <li><strong>Administración de usuarios, accesos y permisos:</strong> <mark>creación, modificación y baja de cuentas</mark>; administración de permisos, credenciales, accesos a plataformas internas y soporte a procesos de <mark>autenticación y recuperación de cuentas</mark>.</li>
-          <li><strong>Onboarding y offboarding tecnológico:</strong> preparación y entrega de equipos, configuración de accesos y herramientas para <mark>nuevos ingresos</mark>, así como <mark>revocación de accesos</mark>, recuperación de activos y cierre tecnológico en procesos de baja.</li>
+          <li><strong>Soporte técnico y gestión de incidencias:</strong> atención, diagnóstico, seguimiento y resolución de incidencias de hardware, software, <b>Microsoft 365, conectividad</b>, periféricos y plataformas corporativas para <b>usuarios y sedes remotas</b>.</li>
+          <li><strong>Administración de equipos e inventario tecnológico:</strong> gestión del <b>ciclo de vida de equipos de cómputo y dispositivos móviles</b>, incluyendo asignaciones, altas, bajas, resguardos, inventarios, validación física y funcional, movimientos entre sedes y recuperación de activos.</li>
+          <li><strong>Administración de usuarios, accesos y permisos:</strong> <b>creación, modificación y baja de cuentas</b>; administración de permisos, credenciales, accesos a plataformas internas y soporte a procesos de <b>autenticación y recuperación de cuentas</b>.</li>
+          <li><strong>Onboarding y offboarding tecnológico:</strong> preparación y entrega de equipos, configuración de accesos y herramientas para <b>nuevos ingresos</b>, así como <b>revocación de accesos</b>, recuperación de activos y cierre tecnológico en procesos de baja.</li>
         </ul>
         <ul class="bullets more" id="more-deli" hidden>
-          <li><strong>Administración y soporte de plataformas corporativas:</strong> soporte operativo a <mark>Microsoft 365, Teams, Outlook, OneDrive</mark>, Nimbo, Monday.com, Metabase/Estela, Odoo, sistemas administrativos Aspel y otras herramientas internas.</li>
-          <li><strong>Diagnóstico y mantenimiento de equipos:</strong> evaluación de fallas de hardware y software, <mark>reinstalación y recuperación de sistemas</mark>, gestión de controladores, <mark>respaldos, clonación de discos</mark>, configuración de periféricos y validaciones posteriores a mantenimiento.</li>
-          <li><strong>Gestión documental y control de activos:</strong> elaboración y seguimiento de responsivas, registros de asignación, evidencias fotográficas, <mark>reportes técnicos, documentación de incidencias</mark> y actualización de bases de datos de inventario y credenciales.</li>
-          <li><strong>Seguimiento a proveedores y servicios tecnológicos:</strong> coordinación de soporte con <mark>proveedores externos</mark>, seguimiento de garantías, adquisición o sustitución de componentes, líneas y dispositivos de telecomunicaciones y <mark>escalamiento de incidencias</mark>.</li>
-          <li><strong>Análisis, seguimiento y mejora de procesos:</strong> creación y mantenimiento de <mark>formularios, tableros, controles y reportes</mark> para seguimiento de incidencias, equipos, accesos y operación; identificación de discrepancias y riesgos relacionados con inventarios y cumplimiento de procesos.</li>
+          <li><strong>Administración y soporte de plataformas corporativas:</strong> soporte operativo a <b>Microsoft 365, Teams, Outlook, OneDrive</b>, Nimbo, Monday.com, Metabase/Estela, Odoo, sistemas administrativos Aspel y otras herramientas internas.</li>
+          <li><strong>Diagnóstico y mantenimiento de equipos:</strong> evaluación de fallas de hardware y software, <b>reinstalación y recuperación de sistemas</b>, gestión de controladores, <b>respaldos, clonación de discos</b>, configuración de periféricos y validaciones posteriores a mantenimiento.</li>
+          <li><strong>Gestión documental y control de activos:</strong> elaboración y seguimiento de responsivas, registros de asignación, evidencias fotográficas, <b>reportes técnicos, documentación de incidencias</b> y actualización de bases de datos de inventario y credenciales.</li>
+          <li><strong>Seguimiento a proveedores y servicios tecnológicos:</strong> coordinación de soporte con <b>proveedores externos</b>, seguimiento de garantías, adquisición o sustitución de componentes, líneas y dispositivos de telecomunicaciones y <b>escalamiento de incidencias</b>.</li>
+          <li><strong>Análisis, seguimiento y mejora de procesos:</strong> creación y mantenimiento de <b>formularios, tableros, controles y reportes</b> para seguimiento de incidencias, equipos, accesos y operación; identificación de discrepancias y riesgos relacionados con inventarios y cumplimiento de procesos.</li>
           <li><strong>Coordinación y seguimiento interdepartamental:</strong> comunicación con distintos equipos, responsables y usuarios para atender requerimientos tecnológicos, dar seguimiento a incidencias y asegurar la correcta ejecución de procesos internos.</li>
         </ul>
         <button class="more-toggle" type="button" aria-expanded="false" aria-controls="more-deli" data-label="6 responsabilidades más">Ver 6 responsabilidades más <span class="chev"></span></button>
@@ -446,12 +440,12 @@
           </div>
         </div>
         <ul class="bullets">
-          <li><strong>Base de seguimiento:</strong> creación y administración de una base de <mark>más de 2,000 registros</mark>, controlando folios, banco, estatus, documentación y resultados; comunicación continua con brokers hipotecarios.</li>
-          <li><strong>Análisis de solicitudes:</strong> gestión y análisis de solicitudes de crédito hipotecario, validando <mark>información personal, financiera y documental</mark> para procesos de precalificación y aprobación.</li>
-          <li><strong>Gestión multibanco:</strong> análisis de expedientes conforme a políticas bancarias y gestión de casos en plataformas de <mark>Scotiabank, Banamex, HSBC, Banorte y Santander</mark>.</li>
+          <li><strong>Base de seguimiento:</strong> creación y administración de una base de <b>más de 2,000 registros</b>, controlando folios, banco, estatus, documentación y resultados; comunicación continua con brokers hipotecarios.</li>
+          <li><strong>Análisis de solicitudes:</strong> gestión y análisis de solicitudes de crédito hipotecario, validando <b>información personal, financiera y documental</b> para procesos de precalificación y aprobación.</li>
+          <li><strong>Gestión multibanco:</strong> análisis de expedientes conforme a políticas bancarias y gestión de casos en plataformas de <b>Scotiabank, Banamex, HSBC, Banorte y Santander</b>.</li>
         </ul>
         <ul class="bullets more" id="more-casa" hidden>
-          <li><strong>Seguimiento de procesos:</strong> precalificación, aprobación y avalúo; integración documental, carga de expedientes y atención de observaciones de <mark>mesas de control</mark>.</li>
+          <li><strong>Seguimiento de procesos:</strong> precalificación, aprobación y avalúo; integración documental, carga de expedientes y atención de observaciones de <b>mesas de control</b>.</li>
           <li><strong>Relación con instituciones bancarias:</strong> gestión directa para aclaraciones y reconsideración de casos, sustentando solicitudes mediante análisis de expedientes.</li>
         </ul>
         <button class="more-toggle" type="button" aria-expanded="false" aria-controls="more-casa" data-label="2 responsabilidades más">Ver 2 responsabilidades más <span class="chev"></span></button>
@@ -553,7 +547,7 @@
             <span class="edu-date">2017 – 2024</span>
           </div>
           <p class="edu-org">Escuela Superior de Ingeniería Mecánica y Eléctrica (ESIME), Unidad Culhuacán, Instituto Politécnico Nacional</p>
-          <span class="edu-status">Pasante · Servicio social concluido · Titulación en trámite</span>
+          <span class="edu-status">Pasante</span>
         </div>
       </div>
       <div class="edu-item">
